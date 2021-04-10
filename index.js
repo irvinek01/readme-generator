@@ -56,8 +56,14 @@ inquirer
     .then((answer) => {
         const filename = `README.md`;
         const licenseWithoutSpaces = `${answer.projlcns}`.replace(/ /g, '%20');
-        const content = `# ${answer.projname}
-![GitHub license](https://img.shields.io/static/v1.svg?label=License&message=`+licenseWithoutSpaces+`&color=yellow)\n
+        let licenseShieldsIO;
+        if (licenseWithoutSpaces == 'None') {
+            licenseShieldsIO = 'None';
+        } else {
+            licenseShieldsIO = `![GitHub license](https://img.shields.io/static/v1.svg?label=License&message=`+ 
+            licenseWithoutSpaces + `&color=yellow)\n`;
+        }
+        const content = `# ${answer.projname}\n`+licenseShieldsIO+`
 ## Description\n
 ${answer.projdesc}\n
 ## Table of Contents\n
@@ -74,7 +80,7 @@ ${answer.install}\n` + '```\n' + `
 ## Usage\n
 ${answer.usage}\n
 ## License\n
-This project is licensed under the ${answer.projlcns} license.\n
+This project has ${answer.projlcns} license.\n
 ## Contributing\n
 ${answer.contributions}\n
 ## Tests\n
@@ -86,21 +92,22 @@ If you have any questions or concerns about the repo, open an issue or contact m
 ${answer.useremail}. You can find more of my work at [${answer.gitusern}](https://github.com/${answer.gitusern})`;
 
         const projectname = `${answer.projname}`.replace(/ /g, '-');
-        if (fs.existsSync('./project-titles/'+projectname)) {
-            console.log("Directory named " + projectname + " already exist!\n"
-                + "Proceeding on saving the README.md");
-            fs.writeFile("./project-titles/" + projectname + "/" + filename, content.replace(/ /g, ''), (err) =>
+        function writeREADME() {
+            fs.writeFile("./project-titles/" + projectname + "/" + filename, content, (err) =>
                 err ? console.error(err) : console.log('Success, README.md saved!')
             );
+        }
+        if (fs.existsSync('./project-titles/' + projectname)) {
+            console.log("Directory named " + projectname + " already exist!\n"
+                + "Proceeding on saving the README.md");
+            writeREADME();
         } else {
             fs.mkdir("./project-titles/" + projectname, function (err) {
                 if (err) {
                     console.log(err);
                 } else {
                     console.log("Directory named " + projectname + " created!");
-                    fs.writeFile("./project-titles/" + projectname + "/" + filename, content, (err) =>
-                        err ? console.error(err) : console.log('Success, README.md saved!')
-                    );
+                    writeREADME();
                 }
             })
         }

@@ -1,9 +1,8 @@
-# World of Words
-![GitHub license](https://img.shields.io/static/v1.svg?label=License&message=APACHE%202.0&color=yellow)
-
+# Sample 1
+None
 ## Description
 
-An online dictionary
+This is a short description.
 
 ## Table of Contents
 
@@ -29,15 +28,15 @@ npm i
 
 ## Usage
 
-USE THIS
+User need to know
 
 ## License
 
-This project is licensed under the APACHE 2.0 license.
+This project has None license.
 
 ## Contributing
 
-CONTRIBUTE TO THIS
+User need to know about contributing.
 
 ## Tests
 
@@ -51,4 +50,4 @@ npm test
 
 If you have any questions or concerns about the repo, open an issue or contact me directly at
 
-arvinyoung01@gmail.com. You can find more of my work at [irvinek01](https://github.com/irvinek01)
+email@gmail.com. You can find more of my work at [GitHub username](https://github.com/GitHub username)
