@@ -11,5 +11,5 @@ The application will be invoked by using the following command:
 node index.js
 ```
 
-- The index.html
-![The Weather Dashboard index.](./Assets/Screenshots/index.png)
+- A sample for the command-line application.
+![The command-line application.](./assets/screenshots/command-line.png)
